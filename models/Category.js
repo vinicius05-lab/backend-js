@@ -4,16 +4,16 @@ class Category {
 
     async create(name) {
         try {
-            var category = await dbs.insert({name: name});
-
-            if(category.length > 0) {
-                return {data: category[0], msg: "Categoria criada", status: 200}
+            var category = await dbs('Categories').insert({ name: name }).returning('*');
+    
+            if (category.length > 0) {
+                return { data: category[0], msg: "Categoria criada", status: 200 };
             }
-
+    
             return { msg: "Falha ao criar categoria.", status: 500 };
         } catch (err) {
             console.log(err);
-            return {msg: "Erro", status: 500};
+            return { msg: "Erro", status: 500 };
         }
     }
 
