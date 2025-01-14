@@ -27,7 +27,7 @@ class categoryController {
     }
 
     async getById(req, res) {
-        const id = req.params;
+        const id = Number(req.params.id);
         var result = await category.getById(id);
         if(result) {
             res.status(result.status);
@@ -39,7 +39,7 @@ class categoryController {
     }
 
     async update(req, res) {
-        const id = req.params;
+        const id = Number(req.params);
         const name = req.body;
         var result = await category.update(id, name);
         if(result) {
@@ -52,7 +52,7 @@ class categoryController {
     }
 
     async delete(req, res) {
-        const id = req.params;
+        const id = Number(req.params);
         var result = await category.delete(id);
         if(result) {
             res.status(result.status);
