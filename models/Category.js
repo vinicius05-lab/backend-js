@@ -18,7 +18,6 @@ class Category {
     }
 
     async getAll() {
-        console.log("Executando getAll...");
         try {
             var categories = await dbs.select().table('Categories');
             if (categories.length > 0) {
